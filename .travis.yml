@@ -1,0 +1,10 @@
+sudo: require
+services:
+    - docker
+language: generic 
+
+before_install:
+    - docker build -t ccifuentes95/react-frontend -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true ccifuentes95/react-frontend npm test
