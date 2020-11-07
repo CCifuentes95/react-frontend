@@ -8,3 +8,15 @@ before_install:
 
 script:
     - docker run -e CI=true ccifuentes95/react-frontend npm test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "ReactFrontend"
+    env: "ReactFrontend-env"
+    bucket_name: "elasticbeanstalk-us-east-2-572736066318"
+    bucket_path: "ReactFrontend"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
